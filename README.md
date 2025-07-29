@@ -1,98 +1,62 @@
-# 🧠 Mental Health Prediction App
+General ML Model Evaluation App
+This project is a Streamlit web application that allows users to upload any CSV dataset and quickly evaluate the performance of several popular machine learning models. The app is designed to help anyone, even without coding experience, understand how different models perform on their data by providing visual reports, feature analysis, and comparison charts.
 
-A Streamlit web application that predicts the likelihood of mental health issues (specifically **depression**) using various machine learning models. This tool is built for educational and research purposes, enabling quick model comparison, visualization, and reporting from CSV datasets.
+About the project
+Once a user uploads a dataset, the app guides them to select the target column they want to predict. It automatically handles encoding of categorical variables and scales the data to prepare it for modeling. The application supports several classifiers, including Logistic Regression, Decision Tree, Random Forest, Support Vector Machine (SVM), and K‑Nearest Neighbors (KNN).
 
----
+For each selected model, the app displays detailed results including accuracy, a confusion matrix, and a classification report. Additionally, for tree‑based models, it shows the feature importance scores so users can understand which features have the most impact on the model’s predictions. Finally, the app compares all selected models in a single chart and allows users to download the results as a CSV file.
 
-## 🚀 Features
+Features
+Upload any CSV file, with support for larger files up to about 1.2 GB if the server is configured correctly
 
-- 📁 Upload your own CSV dataset
-- 🧼 Auto preprocessing (One-Hot Encoding, Standardization)
-- ⚙️ Sidebar to choose:
-  - Models to run (Logistic Regression, Decision Tree, Random Forest, SVM, KNN)
-  - Test size split
-  - Detailed report visibility
-- 📊 Model performance visualization using accuracy bar chart
-- 🧾 Classification report and confusion matrix per model
-- 📥 Downloadable CSV report for all model accuracies
+Automatically detect and encode categorical columns so the data can be used for modeling
 
----
+Choose the target column dynamically based on the uploaded dataset
 
-## 🛠️ Tech Stack
+Run multiple machine learning models and view their accuracy
 
-- **Frontend/UI**: [Streamlit](https://streamlit.io/)
-- **Machine Learning**: scikit-learn
-- **Visualization**: matplotlib, seaborn
-- **Language**: Python 3.x
+See detailed classification reports and confusion matrices for each model
 
----
+Analyze which features are most important for tree‑based models
 
-## 📂 Dataset Requirements
+Compare the performance of models side by side using visual charts
 
-Your uploaded CSV must contain at least the following:
+Download the final accuracy comparison as a CSV file for future reference
 
-| Column Name     | Type         | Description                         |
-|------------------|--------------|-------------------------------------|
-| `Depression`     | Binary (0/1) | Target column (Depressed or not)    |
-| `Gender`         | Categorical  | Gender of the individual            |
-| `Course`         | Categorical  | Course enrolled (optional)          |
-| `YearOfStudy`    | Categorical  | Academic year (optional)            |
-| Other features   | Numerical    | Any relevant numeric features       |
+Installation
+Before running the app, make sure you have Python 3.8 or higher installed on your machine. Then, install the required Python libraries using pip. Open a terminal or command prompt and run the following command:
 
----
+pip install streamlit pandas numpy matplotlib seaborn scikit-learn
 
-## 💡 How to Use
+Configuring large file uploads
+By default, Streamlit limits file uploads to about 200 MB. If you plan to upload larger datasets, you can increase this limit. In your project directory, create a folder named .streamlit and inside it create a file called config.toml with the following content:
 
-1. Clone the repository
-```bash
-git clone https://github.com/<your-username>/mental-health-prediction.git
-cd mental-health-prediction
+[server]
+maxUploadSize = 1200
 
-Install the dependencies
+This will increase the maximum upload size to around 1.2 GB. Note that uploading very large files also depends on your computer’s available memory.
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Run the Streamlit app
+Running the app
+After setting everything up, navigate to your project directory in the terminal and run:
 
-bash
-Copy
-Edit
-streamlit run streamlit_mental_health_ui.py
-Open in browser and upload your dataset!
+streamlit run project.py
 
-📁 Files Structure
-bash
-Copy
-Edit
-mental-health-prediction/
-│
-├── streamlit_mental_health_ui.py   # Main app
-├── mentalhealth_dataset.csv        # Sample dataset (optional)
-├── requirements.txt                # Required packages
-├── screenshot.png                  # UI image 
-└── README.md
-📊 Sample Output
-python-repl
-Copy
-Edit
-Model: Random Forest
-Accuracy: 0.87
-Classification Report:
-...
-Confusion Matrix:
-...
-📌 Future Scope
-Add prediction from user input form
+This will start the Streamlit app and open it in your default web browser. From there, you can upload a CSV file and begin exploring the models.
 
-Export trained model
+How to use the app
+Upload your dataset as a CSV file. After uploading, select the target column that you want to predict. Adjust test size and choose which machine learning models you want to run from the sidebar options. View the results, including accuracy scores, detailed reports, and feature importance for tree models. Compare models in a visual chart and download the summary of results as a CSV file.
 
-Model explainability using SHAP
+License
+This project is open source and available under the Vushakola Phanindra License, so you are free to use, modify, and share it.
 
-Deployment on Streamlit Cloud
+Author
+This app was developed to make machine learning more accessible by providing an interactive, no-code interface for testing and comparing popular classification models on any dataset.
 
-🙌 Acknowledgments
-Inspired by real-world mental health prediction research
+The idea is to help students, data enthusiasts, and professionals quickly explore how different models perform, understand feature importance, and visualize results without writing a single line of code.
 
-Built with ❤️ using Python and Streamlit
+Built using Python, Streamlit, and popular machine learning libraries like scikit-learn, it aims to turn raw data into insight in just a few clicks.
+
+If you have suggestions, find issues, or want to contribute new features, your feedback is welcome. Feel free to fork the repository, open pull requests, or reach out.
+
+Developed by Phanindra V in 2025.
+
